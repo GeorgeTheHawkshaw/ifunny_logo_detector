@@ -1,0 +1,4 @@
+python match.py --template templatesmaller.png --images images --visualize a
+
+(visualize argument is optional)
+
