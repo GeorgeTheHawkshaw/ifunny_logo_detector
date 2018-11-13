@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 print(cv.__version__)
 
-img_rgb = cv.imread('example.png')
+img_rgb = cv.imread('example2.png')
 
 img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
 
@@ -12,7 +12,7 @@ w, h = template.shape[::-1]
 
 res = cv.matchTemplate(img_gray,template,cv.TM_CCOEFF_NORMED)
 
-threshold = 0.8
+threshold = 0.5
 
 loc = np.where( res >= threshold)
 
