@@ -4,6 +4,7 @@ import argparse
 import imutils
 import glob
 import cv2
+from PIL import Image
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-t","--template", required=True, help="Path to the template image")
@@ -61,4 +62,12 @@ for imagePath in glob.glob(args["images"] + "/*.png"):
 	# draw a rectangle
     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)
     cv2.imshow("Image", image)
+    cv2.imwrite("new.png",image)
+
+
+    # crop
+    image_obj = Image.open("new.png")
+    cropped_image = image_obj.crop((0,0,endX,startY))
+    cropped_image.save("cropped.jpg")
+    cropped_image.show()
     cv2.waitKey(0)
